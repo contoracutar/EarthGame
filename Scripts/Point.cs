@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Point : Mover {
 	GameObject mainCamera, earth;
+	MainCamera mCamera;
 	Vector3 accessZeroVector;
 	Quaternion baseRot;
 	float speed;
@@ -12,6 +13,7 @@ public class Point : Mover {
 	void Awake () {
 		mainCamera = GameObject.Find ("Main Camera");
 		earth = GameObject.Find ("Earth");
+		mCamera = mainCamera.GetComponent<MainCamera> ();
 	}
 
 	void Start () {
@@ -25,8 +27,6 @@ public class Point : Mover {
 	void Update () {
 		transform.position = pos;
 		if (owner) {
-			velocity = Vector3.zero;
-			MainCamera mCamera = mainCamera.GetComponent<MainCamera> ();
 			float r = (owner.transform.localScale.x + transform.localScale.x) / 2;
 			if (TouchController.touchTrigger || TouchController.touchMoveVec != Vector3.zero) {
 				accessZeroVector = TouchController.touchMoveVec;

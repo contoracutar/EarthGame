@@ -4,7 +4,6 @@ using System.Collections;
 public class Mover : MonoBehaviour {
 	public int hp = 1;
 	public int count = 0, frame = 0;
-	public bool isDelete;
 	public Vector3 pos, prevPos, velocity;
 	public Quaternion rotation;
 	public GameObject owner;
@@ -59,5 +58,9 @@ public class Mover : MonoBehaviour {
 	}
 	public Quaternion RotationXYZ (float angle) {
 		return RotationX(angle) * RotationY(angle) * RotationZ(angle);
+	}
+
+	public void IsDelete () {
+		Destroy (gameObject);
 	}
 }
